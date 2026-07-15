@@ -1,0 +1,214 @@
+integer type;
+integer devsign;
+real NFINtotal;
+real DevTemp, DevTemp1, DevTempeff, DevTemplow0, DevTemplow1, Tlow;
+real ids0, ids0_ov_dqi, ids_v, ids_rfet, vgs, vds, vdsx, sigvds, vch, etaiv;
+real rfet_width, rfet_amp, rfet_slope, rfet_barrier_power, rfet_contact_wf;
+real rfet_phi0, rfet_wf_barrier, rfet_phi_barrier, rfet_nsd_eff;
+real rfet_tun_length, rfet_contact_n_factor, rfet_field_scale, rfet_field_offset;
+real rfet_base_field, rfet_bias_field, rfet_field_eff;
+real rfet_gate_field_factor, rfet_drain_coupling, rfet_v_offset, rfet_vdrive;
+real rfet_fermi_window, rfet_exp_arg, rfet_ids_dd_pos;
+real vgs_noswap, vds_noswap, vgd_noswap;
+real qd_v, qg_v, qs_v, qb_v;
+real ni, niln, epssub, epssp, epsratio, Eg, Eg0, Nc;
+real Lg, deltaL, deltaL1, deltaLCV, Leff, Leff_ln, Leff1, LeffCV, LeffCV_acc, Weff0, WeffCV0, WeffCV_acc, WGAAeff, WGAAeff1;
+real cox, cdsc_v, cbox;
+real phib, deltaPhi;
+real T0, T1, T2, T3, T4, T5, T6, T7, T8;
+real Vtm, Vtm0, nVtm, Vtmeff;
+real beta_v, beta0_v;
+real wf, wr_v;
+real Dr, WeffWRFactor;
+real RSourceGeo, RDrainGeo;
+real Rdrain, Rsource;
+real rdstemp, Rdsi, Rdss;
+real DIBLfactor, PVAGfactor, diffVds, VaDIBL, Vgst2Vtm, Moc, Mclm;
+real MclmCV, inv_MclmCV;
+real Dvsat, Vdsat, inv_MEXP, DvsatCV, Nsat, u0mult_v;
+real Esat, EsatL, Esat1, Esat1L, EsatCV, EsatCVL;
+real WVCox, Ta, Tb, Tc;
+
+real Tnom, TRatio, TRatio_m1, dvth_temp, delTemp, delTemp1, delTRatio1, ThetaSS;
+real K0_t, K0SI_t, K2SI_t, K1_t, K2SAT_t, A1_t, A2_t;
+real AIGBINV_t, AIGBACC_t, AIGC_t, AIGS_t, AIGD_t;
+real BETA0_t, SII0_t, BGISL_t, BGISLB_t, BGIDL_t, BGIDLB_t, igtemp, PTWG_t, PTWGR_t;
+real ALPHA0_t, ALPHA1_t, ALPHAII0_t, ALPHAII1_t;
+real CJS_t, CJSWS_t, CJSWGD_t, CJD_t, CJSWD_t, CJSWGS_t;
+real PBS_t, PBSWS_t, PBSWGS_t, PBD_t, PBSWD_t, PBSWGD_t;
+real JSS_t, JSWS_t, JSWGS_t, JSD_t, JSWD_t, JSWGD_t;
+real JTSS_t, JTSD_t, JTSSWS_t, JTSSWD_t, JTSSWGS_t, JTSSWGD_t;
+real NJTS_t, NJTSD_t, NJTSSW_t, NJTSSWD_t, NJTSSWG_t, NJTSSWGD_t;
+real K2_t;
+real K0SISAT_t, K2SISAT_t;
+real ETA0_t, ETA0R_t;
+real RSDR_t, RSDRR_t, RDDR_t, RDDRR_t;
+real UA_t, UAR_t, UA_tl, UA_th, UAR_tl, UAR_th, wh, wl, UC_t, UCCV_t, UCR_t, UCS_t, UD_t, UDR_t, U0R_t, ETAMOB_t, EU_t, UDS_t, UDD_t, UDSeff_t, UDDeff_t;
+real VSAT_t, VSATR_t, VSAT1_t, VSAT1R_t, VSATCV_t, MEXP_t, MEXPR_t;
+
+real q0;
+real T11;
+real e0, e1, e2;
+
+real vgsfb, vgsfbeff;
+
+real scl, vbi, phist, dvth_vtroll, dvth_dibl, dvth_rsce, dvth_all;
+real tmp, Theta_SCE, Theta_SW, Theta_DIBL, Theta_RSCE, Theta_DITS;
+
+real Mnud;
+
+real ves, veseff;
+real Mob;
+
+real coxeff, Tcen0, Tcen, dvch_qm, MTcen;
+real E0, E0prime, E1, E1prime, mx, mxprime, md, mdprime;
+real gprime, gfactor, gam0, gam1, kT;
+
+real Vdseff, qis, qid, qbs, Dmobs;
+
+real qia, qia2, qba, dqi;
+real qb0;
+real eta_mu, eta_mu_cv, Eeffm, Eeffm_cv, Dmob, Dmob_cv, u0_v, ueff, u0_a, u0r_v;
+real Trat_ln, Eeffs, EeffFactor;
+
+real VSAT1_a, MEXP_a, PTWG_a, RSDR_a, RDDR_a, PDIBL1_a, VSAT_a;
+
+real mu_max, mu_rsd, rhorsd_v, afin, thetarsp;
+real Rsp, lt, arsd_total, prsd_total, alpha;
+real eta, RrsdTML, Rrsdside, Rrsd;
+real Rdsgeo, Arsd, Prsd;
+
+real Hg, Cfr_geo;
+
+real ggeltd;
+
+real igbinv_v, igsd_mult, igsd_mult0, igbs_v, igbd_v;
+real igbacc_v;
+real igcs_v, igcd_v;
+real igisl_v, igidl_v, igislb, igidlb, vfbsd_v, igs_v, igd_v, vgs_eff, vgd_eff;
+real Aechvb, Bechvb, Toxratio, Toxratioedge;
+
+real Iii;
+
+real cox_acc;
+real qg_acc, qb_acc;
+real vge;
+
+real qgs_ov, qgd_ov, qgs_fr, qgd_fr, qds_fr;
+real qgs_parasitic, qgd_parasitic, Qes, Qed, Qeg;
+real vgs_overlap, vgd_overlap;
+real csbox, cdbox, cgbox, vfbsdcv_v;
+
+real Ies, Ied, ves_jct, ved_jct;
+real Czbs, Czbssw, Czbsswg, Czbd, Czbdsw, Czbdswg;
+real Qesj, Qedj;
+real Isbs, Isbd, Nvtms, Nvtmd;
+real SslpRev, IVjsmRev, VjsmRev, SslpFwd, IVjsmFwd, VjsmFwd, XExpBVS;
+real DslpRev, IVjdmRev, VjdmRev, DslpFwd, IVjdmFwd, VjdmFwd, XExpBVD;
+real igentemp, idsgen_v;
+real vec1s, pb21s, vec2s, pb22s, vec3s, pb23s, vec1d, pb21d, vec2d, pb22d, vec3d, pb23d;
+
+real gcrg, gtau, xdpart;
+
+real litl;
+
+real qinv, sid;
+real gspr, gdpr;
+
+real Dr0;
+real delta;
+real ctnoi, sigrat;
+
+real gth, cth;
+
+real Inv_L, Inv_NFIN, Inv_LNFIN, Inv_W, Inv_WL;
+real NBODY_i, PHIG_i, CFD_i, CFS_i, CGSO_i, CGDO_i;
+real CGSL_i, CGDL_i, CKAPPAS_i, CKAPPAD_i;
+real QMFACTOR_i, QMTCENCV_i, QMTCENCVA_i, KSATIV_i, KSATIVR_i, KSATIV_a, KSATIV_t, PQM_i;
+real CDSC_i, CDSCD_i, CDSCD_a, CDSCDR_i, CIT_i, DVT0_i, CITR_i, CIT_a;
+real ETA0_i, ETA0_a, ETA0R_i, DSUB_i, VSAT_i, VSATR_i;
+real DVTP0_i, DVTP1_i;
+real K0_i, K01_i, K0SI_i, K0SI1_i, K2SI_i, K2SI1_i, PHIBE_i, K1_i, K11_i, K2SAT_i, K2SAT1_i;
+real DELTAVSAT_i, PSAT_i, DELTAVSATCV_i, PSATCV_i, VSAT1_i, VSAT1R_i, PTWG_i, PTWGR_i, VSATCV_i;
+real UP_i, U0_i, U0R_i, ETAMOB_i, RDSW_i, UPR_i;
+real PDIBL1_i, PDIBL1R_i, PDIBL2_i, PDIBL2R_i, PDIBL2_a;
+real AIGBINV_i, AIGBINV1_i;
+real AIGBACC_i, AIGBACC1_i;
+real AIGC_i, AIGC1_i;
+real AIGS_i, AIGS1_i;
+real AIGD_i, AIGD1_i;
+real BGIDL_i;
+real AGIDLB_i, BGIDLB_i, CGIDLB_i, EGIDLB_i, PGIDLB_i;
+real BGISL_i;
+real AGISLB_i, BGISLB_i, CGISLB_i, EGISLB_i, PGISLB_i;
+real ALPHA0_i, ALPHA1_i, ALPHAII0_i, ALPHAII1_i, BETA0_i;
+real SII0_i, TII_i;
+real MEXP_i, MEXPR_i;
+real PCLM_i, PCLMCV_i, PCLM_a, PCLMR_i, PCLM_t;
+real DVTSHIFT_a, DVTSHIFTR_i;
+real UA_i, UC_i, EU_i, UD_i, UCS_i, UAR_i, EUR_i, UCR_i, UDR_i, UA_a, UD_a, UC_a, EU_a;
+real UA1_i, UA1R_i, UC1_i, UD1_i, UCSTE_i, UTE_i, UTL_i, EMOBT_i, UC1R_i, UD1R_i, UTER_i, UTLR_i;
+real PTWGT_i;
+real AT_i, ATCV_i, ATR_i;
+real RDW_i, RSW_i;
+real PRT_i, IIT_i, TGIDL_i;
+real K0SISAT_i, K0SISAT1_i;
+real K2SISAT_i, K2SISAT1_i;
+real K2_i, K21_i;
+real XRCRG1_i, XRCRG2_i;
+real LINTIGEN_i;
+real XL_i, LINT_i, DLBIN_i, XW_i, DWBIN_i;
+real ASAT_i;
+
+real DIMENSION1_i, DIMENSION2_i, DIMENSION3_i, SSP1_i, SSP2_i, SSP3_i, E2NOM_i, E3NOM_i, MFQ1NOM_i, MFQ2NOM_i, MFQ3NOM_i;
+
+real Cins, Ach, Weff_UFCM, WeffB, qdep, rc, vth_fixed_factor_Sub, vth_fixed_factor_SI, qm, qm_ln, Qdep_ov_Cins, qi_acc_for_QM;
+real fieldnormalizationfactor, auxQMfact, QMFACTORCVfinal;
+real nq, F0;
+
+real Hr, Lr, Hgdelta, Lmax, y, x, Cnon, CcgSat, TT1, Ccg1, r1cf, Rcf, Ccg2;
+real Ccg, C1, C2, C3, Cfglog, dcf, TT0, TT2, Cfgsat, Cfg;
+
+real Ach1, Ach2, Ach3, Ach4, Ach5, Ach6, Weff1, Weff2, Weff3, Weff4, Weff5, Weff6;
+
+real d1, d2, d3, p1, p2, p3, Wp1, Wp2, Wp3, Tp1, Tp2, Tp3, ne3h, pe3h, ne2h, pe2h;
+real VnD1, VnD2, VnD3, qndnf1, qndnf2, qndnf3, nc3d0, nc3d, ncq, qe2, qe3, qe2n, qe3n, nc1l0, pnc1l, nc2l0, pnc2l, nc3l0, pnc3l;
+real nc1l, nc1ln, nc1, nc2l, nc2ln, nc2, nc3l, nc3ln, nc3, qnds1, qnds2, qnds3, qndd1, qndd2, qndd3, qnd10, qnd20, qnd30;
+real QT0, QT1, QT2, QT3, QT4, QT5, QT6, QT7, QT8, QT9, QT10;
+
+real mut0, mut1, mut2, mut3, mut4, mut5, mut6;
+
+real rdstempvs, Rvs_s, Rvs_d, gvs_d, gvs_s;
+real VSATRSD_t, vsatrsd_eff;
+real isat_rs, isat_rd, vsat_rd, vsat_rs;
+real delta_vsrd, delta_vsrs;
+
+real gmin;
+
+real nsd;
+
+real Vc_fe, a_fe, eps_fe;
+real Pr_fe, Pr_pos, Pr_neg, Ps_fe, Ps_pos, Ps_neg;
+real Vc_pos, Vc_neg;
+real a_pos, a_neg;
+real Rdelay;
+integer state;
+integer dir_fe;
+real a_V[`NUM_PTS:0];
+real a_P[`NUM_PTS:0];
+integer a_n;
+real b_V[`NUM_PTS:0];
+real b_P[`NUM_PTS:0];
+integer b_n;
+real Vfe_prev;
+real t_last_commit;
+integer on_pini_branch;
+real Vfe;
+real Pfe;
+real m_fe, b_fe;
+real Vturn;
+real Vtol;
+integer i_shift;
+integer do_commit;
+real Vmax_new;
+real Fa_eff, Fb_eff;

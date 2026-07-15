@@ -1,0 +1,15 @@
+`include "constants.vams"
+`include "disciplines.vams"
+`include "FeRFET_macros.include"
+module FeRFET(d, g, s, e, pg);
+    inout d, g, s, e, pg;
+    electrical d, g, s, e, pg;
+    electrical di, si, di1, si1;
+    electrical ge, gi;
+    electrical q;
+    electrical n;
+    electrical nVfe;
+    `include "FeRFET_parameters.include"
+    `include "FeRFET_variables.include"
+    `include "FeRFET_body.include"
+endmodule

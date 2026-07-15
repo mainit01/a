@@ -1,0 +1,161 @@
+if (Weff0 <= 1.0e-9) begin
+end
+
+if (WeffCV0 <= 1.0e-9) begin
+end
+
+if (NBODY_i <= 0.0) begin
+    $error("Fatal: Effective  nbody = %g is not positive.", NBODY_i);
+end else if (NBODY_i <= 1.0e18) begin
+end
+
+if (ngate < 0.0) begin
+    $error("Fatal: Effective  ngate = %g is negative.", ngate);
+end else if (ngate != 0.0 && ngate <= 1.0e24) begin
+end else if (ngate > 1.0e31) begin
+    $error("Fatal: Effective  ngate = %g is too high.", ngate);
+end
+
+if (DVT0_i < 0.0) begin
+end
+
+if (PHIG_i <= 0.0) begin
+    $error("Fatal: Effective phig = %g is not positive.", PHIG_i);
+end
+
+if (VSAT_i <= 0.0) begin
+    $error("Fatal: Effective vsat = %g is not positive.", VSAT_i);
+end
+
+if (VSAT1_i <= 0.0) begin
+    $error("Fatal: Effective vsat1 = %g is not positive.", VSAT1_i);
+end
+
+if (dvt1 <= 0.0) begin
+    $error("Fatal: Effective dvt1 = %g is not positive.", dvt1);
+end
+
+if (dvt1ss <= 0.0) begin
+    $error("Fatal: Effective dvt1ss = %g is not positive.", dvt1ss);
+end
+
+if (CDSC_i < 0.0) begin
+end
+
+if (CDSCD_i < 0.0) begin
+end
+
+if (DSUB_i <= 0.0) begin
+    $error("Fatal: Effective dsub = %g is not positive.", DSUB_i);
+end
+
+if (ETA0_i < 0.0) begin
+    ETA0_i = 0.0;
+end
+
+if (ETA0R_i < 0.0) begin
+    ETA0R_i = 0.0;
+end
+
+if (K0SI_i < 0.0) begin
+    K0SI_i = 0.0;
+end
+
+if (K2SI_i < 0.0) begin
+    K2SI_i = 0.0;
+end
+
+if (PSAT_i < 2.0) begin
+    PSAT_i = 2.0;
+end
+
+if (PSATCV_i < 2.0) begin
+    PSATCV_i = 2.0;
+end
+
+if (U0_i < 0.0) begin
+    U0_i = 0.03;
+end
+
+if (UA_i < 0.0) begin
+    UA_i = 0.0;
+end
+
+if (EU_i < 0.0) begin
+    EU_i = 0.0;
+end
+
+if (UD_i < 0.0) begin
+    UD_i = 0.0;
+end
+
+if (UCS_i < 0.0) begin
+    UCS_i = 0.0;
+end
+
+if (ETAMOB_i < 0.0) begin
+    ETAMOB_i = 0.0;
+end
+
+if (RSW_i < 0.0) begin
+    RSW_i = 0.0;
+end
+
+if (RDW_i < 0.0) begin
+    RDW_i = 0.0;
+end
+
+if (PCLM_i < 0.0) begin
+end
+
+if (PDIBL1_i < 0.0) begin
+end
+
+if (PDIBL2_i < 0.0) begin
+end
+
+if (drout <= 0.0) begin
+    $error("Fatal: Effective drout = %g is non-positive.", drout);
+end
+
+if (MEXP_i < 2.0) begin
+    MEXP_i = 2.0;
+end
+
+if (PTWG_i < 0.0) begin
+    PTWG_i = 0.0;
+end
+
+if (lintigen >= (Leff / 2.0)) begin
+    LINTIGEN_i = 0.0;
+end else begin
+    LINTIGEN_i = lintigen;
+end
+
+if (ntgen <= 0.0) begin
+    $error("Fatal: Effective ntgen = %g is non-positive.", ntgen);
+end
+
+if (CGSL_i < 0.0) begin
+    CGSL_i = 0.0;
+end
+
+if (CGDL_i < 0.0) begin
+    CGDL_i = 0.0;
+end
+
+if (CFS_i < 0.0) begin
+    CFS_i = 0.0;
+end
+
+if (CFD_i < 0.0) begin
+    CFD_i = 0.0;
+end
+
+if (CKAPPAS_i <= 0.02) begin
+    CKAPPAS_i = 0.02;
+end
+
+if (CKAPPAD_i <= 0.02) begin
+    CKAPPAD_i = 0.02;
+end
